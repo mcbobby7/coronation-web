@@ -1,0 +1,21 @@
+.title {
+  margin-top: 30px;
+}
+
+.all .middle {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+}
+
+.search {
+  width: 300px;
+}
+/*# sourceMappingURL=shareholding.component.css.map */

@@ -1,0 +1,90 @@
+.box .body {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  width: 100%;
+  padding-top: 50px;
+}
+
+.box .body .card {
+  width: 150px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  margin: 15px;
+  cursor: pointer;
+}
+
+.box .body .card img {
+  width: 100px;
+  height: 100px;
+}
+
+.box .body .card .text {
+  font-size: 20px;
+  font-weight: 600;
+  margin-top: 30px;
+  margin-bottom: 10px;
+}
+
+.box .body .card .free {
+  color: #979593;
+}
+
+.box .body .card .basic {
+  color: #3952e2;
+}
+
+.box .body .card .premium {
+  color: #d3b129;
+}
+
+.box .foot {
+  margin-top: 20px;
+}
+
+.box .foot .line {
+  background-color: #d3b129;
+  width: 100px;
+  height: 3px;
+  margin: auto;
+}
+
+.box .foot .g {
+  font-size: 13px;
+  text-align: center;
+  width: 300px;
+  margin: auto;
+  margin-bottom: 20px;
+  margin-top: 10px;
+}
+
+.box .foot .g .pre {
+  color: #d3b129;
+}
+
+.selected1 {
+  border: 3px solid #979593;
+}
+
+.selected2 {
+  border: 3px solid #3952e2;
+}
+
+.selected3 {
+  border: 3px solid #d3b129;
+}
+/*# sourceMappingURL=subscribe.component.css.map */

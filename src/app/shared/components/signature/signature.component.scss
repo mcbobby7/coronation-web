@@ -1,0 +1,20 @@
+.box {
+  position: relative;
+  padding: 50px;
+  .signature-container {
+    width: 350px;
+    // height: 200px;
+    margin: auto;
+    background-color: #E5E5E5;
+    border-style: dashed;
+    border-width: 1px;
+  }
+  .down {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+  }
+  button {
+    margin: 10px;
+  }
+}

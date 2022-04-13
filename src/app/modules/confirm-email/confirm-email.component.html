@@ -1,0 +1,170 @@
+<div class="box">
+  <div class="image" [style.background]="'url(' + image + ')'">
+      <div>
+        <img class="logo" src="assets/images/logo.png" alt="">
+      </div>
+      <ng-container [ngSwitch]="stage">
+        <ng-container *ngIf="stageLoading">
+          <app-dash-loader></app-dash-loader>
+        </ng-container>
+        <ng-container *ngIf="!stageLoading">
+
+          <button style="width: 150px;" *ngIf="done" type="button" [routerLink]="['/auth/login']"  class="btnPrimary" > Login</button>
+
+          <!-- <div *ngSwitchCase="'phone'" class="login-wrapper" fxLayout="column" fxLayoutAlign="start start">
+            <div class="loginHeader">
+              <span class="headD">{{title}}</span>
+              <span class="loginSub" >{{sub}}</span>
+            </div>
+            <form *ngIf="!otpTrue">
+              <div class="input">
+                <label for="">Mobile Numbers</label>
+                <input *ngIf="!user.phone_number" [(ngModel)]="user.phone_number" type="text" placeholder="mobile number" [ngModelOptions]="{standalone: true}">
+                <div *ngIf="user.phone_number" class="non_active">{{user.phone_number}}</div>
+              </div>
+
+              <div class="down">
+                <button *ngIf="!loadingOtp" type="button" (click)="sendOTP()" class="btnPrimary" > Send OTP</button>
+                <button *ngIf="loadingOtp" type="button" class="btnPrimary" ><div class="lds-ellipsis"><div></div><div></div><div></div><div></div></div> </button>
+              </div>
+            </form>
+
+            <form *ngIf="otpTrue">
+              <div class="input">
+                <label for="">OTP</label>
+                <input [(ngModel)]="otp" type="number" placeholder="OTP" [ngModelOptions]="{standalone: true}">
+              </div>
+
+              <div class="down">
+                <button *ngIf="!loading" type="button" (click)="verifyOTP()" class="btnPrimary" > Verify OTP</button>
+                <button *ngIf="loading" type="button" class="btnPrimary" ><div class="lds-ellipsis"><div></div><div></div><div></div><div></div></div> </button>
+                <div class="resend" (click)="resend()">Resend OTP</div>
+              </div>
+            </form>
+          </div> -->
+
+
+          <!-- <div *ngSwitchCase="'form'" class="login-wrapper" fxLayout="column" fxLayoutAlign="start start">
+            <div class="loginHeader">
+              <span class="headD">Ativate Account</span>
+              <span class="loginSub" >complete form to activate account</span>
+            </div>
+            <form *ngIf="!box" [formGroup]="form" (ngSubmit)="onSubmit($event)">
+              <div class="input">
+                <label for="">First Name</label>
+                <input *ngIf="!user.first_name" formControlName="firstName" type="text" placeholder="first name">
+                <div *ngIf="user.first_name" class="non_active">{{user.first_name}}</div>
+              </div>
+              <div class="input">
+                <label for="">Last Name</label>
+                <input *ngIf="!user.first_name" formControlName="lastName" type="text" placeholder="last name">
+                <div *ngIf="user.first_name" class="non_active">{{user.first_name}}</div>
+              </div>
+              <div class="input">
+                <label for="">Other Name</label>
+                <input *ngIf="!user.other_name" formControlName="otherName" type="text" placeholder="other name">
+                <div *ngIf="user.other_name" class="non_active">{{user.other_name}}</div>
+              </div>
+              <div class="input">
+                <label for="">Email</label>
+                <input *ngIf="!user.email" formControlName="email" type="email" placeholder="email">
+                <div *ngIf="user.email" class="non_active">{{user.email}}</div>
+              </div>
+              <div class="input">
+                <label for="">Holder Type</label>
+                <select name="" id="" formControlName="holder_type" >
+                  <option *ngFor="let data of holder" [value]="data.code">{{data.title}}</option>
+                </select>
+              </div>
+              <div class="input">
+                <label for="">Mobile Number</label>
+                <input *ngIf="!user.phone_number" formControlName="mobileNo" type="text" placeholder="mobile number">
+                <div *ngIf="user.phone_number" class="non_active">{{user.phone_number}}</div>
+              </div>
+              <div class="input">
+                <label for="">Alternate Mobile No.</label>
+                <input *ngIf="!user.phone_number" formControlName="alternateMobileNo" type="number" placeholder="alternate mobile no">
+                <div *ngIf="user.phone_number" class="non_active">{{user.phone_number}}</div>
+              </div>
+              <div class="input">
+                <label for="">BVN</label>
+                <input *ngIf="!user.bvn" formControlName="bvn" type="text" placeholder="bvn">
+                <div *ngIf="user.bvn" class="non_active">{{user.bvn}}</div>
+              </div>
+              <div class="input">
+                <label for="">TIN</label>
+                <input *ngIf="!user.tin" formControlName="tin" type="text" placeholder="tin">
+                <div *ngIf="user.tin" class="non_active">{{user.tin}}</div>
+              </div>
+              <div class="input">
+                <label for="">NIN</label>
+                <input *ngIf="!user.nin" formControlName="nin" type="text" placeholder="nin">
+                <div *ngIf="user.nin" class="non_active">{{user.nin}}</div>
+              </div>
+              <div class="input">
+                <label for="">RC NO.</label>
+                <input *ngIf="!user.rc_number" formControlName="rC_NO" type="text" placeholder="rc no.">
+                <div *ngIf="user.rc_number" class="non_active">{{user.rc_number}}</div>
+              </div>
+
+              <div class="down">
+                <button style="margin-bottom: 20px;" (click)="boxup()" type="button"  class="btnPrimary"> Add Signature & ID </button>
+                <button  *ngIf="!loading" class="btnPrimary"> Send </button>
+                <button *ngIf="loading" type="button" class="btnPrimary" ><div class="lds-ellipsis"><div></div><div></div><div></div><div></div></div> </button>
+              </div>
+            </form>
+
+            <div *ngIf="box" class="bx">
+              <div class="input">
+                <label for="">ID Name</label>
+                <input [(ngModel)]="user.identity_info.validId_Name" type="text" placeholder="nin">
+              </div>
+              <div class="input">
+                <label for="">ID Number</label>
+                <input [(ngModel)]="user.identity_info.validId_Number" type="text" placeholder="">
+              </div>
+              <div class="input">
+                <label for="">Exp. Date</label>
+                <input  [(ngModel)]="user.identity_info.validId_ExpDate" type="date" placeholder="">
+              </div>
+
+              <div class="sign">
+                <div class="form-group">
+                  <div class="custom-file fileInputProfileWrap">
+                      <input type="file" (change)="fileChangeEvent($event)" class="fileInputProfile">
+                      <div class="img-space">
+                          <ng-container *ngIf="isImageSaved; else elseTemplate">
+                              <img style="width: 350px; height: 150px;" [src]="cardImageBase64" />
+                          </ng-container>
+                          <ng-template #elseTemplate>
+                              <h3 style="width: 100%; text-align: center;">Click to select ID card</h3>
+                              <h4 style="width: 100%; text-align: center;">{{imageError}}</h4>
+                          </ng-template>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="down">
+                </div>
+
+
+              <div class="signature-container">
+                <signature-pad [options]="signaturePadOptions" (onBeginEvent)="drawStart()" (onEndEvent)="drawComplete()"></signature-pad>
+              </div>
+
+              <div class="buttons">
+                <div class="down">
+                  <button type="button" (click)="clearSignature()" class="btnPrimary" > Clear</button>
+                  <button type="button" (click)="boxup()" class="btnPrimary" > back</button>
+                </div>
+              </div>
+
+
+            </div>
+          </div> -->
+
+        </ng-container>
+
+      </ng-container>
+    </div>
+</div>

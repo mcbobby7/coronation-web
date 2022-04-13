@@ -1,0 +1,24 @@
+import { NgModule } from '@angular/core';
+import { Routes, RouterModule } from '@angular/router';
+
+import { MainLayoutComponent } from '../../layouts/main-layout/main-layout.component'
+import { DivHistoryComponent } from './div-history.component'
+import { AuthGuard } from '../../core/guard/guard.guard'
+const routes: Routes = [
+  {
+    path: '',
+    component: MainLayoutComponent,
+    children: [
+      {
+        path: '',
+        component: DivHistoryComponent,
+        canActivate: [AuthGuard],
+      }
+    ]
+  },
+];
+@NgModule({
+  imports: [RouterModule.forChild(routes)],
+  exports: [RouterModule]
+})
+export class DivHistoryRoutingModule { }

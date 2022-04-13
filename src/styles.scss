@@ -1,1 +1,295 @@
+
+@import './color', './responsive';
+
+@import '~ngx-toastr/toastr';
+@import "./loader.scss";
+
+// Custom Theming for Angular Material
+// For more information: https://material.angular.io/guide/theming
+@import '~@angular/material/theming';
+// @import url('https://fonts.googleapis.com/css2?family=Lato:wght@500&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Lato&display=swap');
+// Plus imports for other components in your app.
+
+// Include the common styles for Angular Material. We include this here so that you only
+// have to load a single css file for Angular Material in your app.
+// Be sure that you only ever include this mixin once!
+@include mat-core();
+
+// Define the palettes for your theme using the Material Design palettes available in palette.scss
+// (imported above). For each palette, you can optionally specify a default, lighter, and darker
+// hue. Available color palettes: https://material.io/design/color/
+$coronation-primary: mat-palette($mat-indigo);
+$coronation-accent: mat-palette($mat-pink, A200, A100, A400);
+
+// The warn palette is optional (defaults to red).
+$coronation-warn: mat-palette($mat-red);
+$custom-typography: mat-typography-config($font-family: '"Lato", sans-serif;');
+@include mat-core($custom-typography);
+
+// Create the theme object. A theme consists of configurations for individual
+// theming systems such as "color" or "typography".
+$coronation-theme: mat-light-theme((
+  color: (
+    primary: $coronation-primary,
+    accent: $coronation-accent,
+    warn: $coronation-warn,
+  )
+));
+
+// Include theme styles for core and each component used in your app.
+// Alternatively, you can import and @include the theme mixins for each component
+// that you are using.
+@include angular-material-theme($coronation-theme);
+
+
+// Custom Theming for Angular Material
+// For more information: https://material.angular.io/guide/theming
+@import '~@angular/material/theming';
+// Plus imports for other components in your app.
+
+// Include the common styles for Angular Material. We include this here so that you only
+// have to load a single css file for Angular Material in your app.
+// Be sure that you only ever include this mixin once!
+@include mat-core();
+
+// Define the palettes for your theme using the Material Design palettes available in palette.scss
+// (imported above). For each palette, you can optionally specify a default, lighter, and darker
+// hue. Available color palettes: https://material.io/design/color/
+$coronation-primary: mat-palette($mat-indigo);
+$coronation-accent: mat-palette($mat-pink, A200, A100, A400);
+
+// The warn palette is optional (defaults to red).
+$coronation-warn: mat-palette($mat-red);
+
+// Create the theme object. A theme consists of configurations for individual
+// theming systems such as "color" or "typography".
+$coronation-theme: mat-light-theme((
+  color: (
+    primary: $coronation-primary,
+    accent: $coronation-accent,
+    warn: $coronation-warn,
+  )
+));
+
+// Include theme styles for core and each component used in your app.
+// Alternatively, you can import and @include the theme mixins for each component
+// that you are using.
+@include angular-material-theme($coronation-theme);
+
 /* You can add global styles to this file, and also import other style files */
+
+html, body { height: 100%; margin: 0;font-family: "Lato", sans-serif !important; outline: none; }
+body { margin: 0; }
+
+.loader {
+  border: 4px solid #f3f3f3;
+  border-radius: 50%;
+  border-top: 4px solid $primary;
+  width: 15px;
+  height: 15px;
+  margin: 5px auto;
+  -webkit-animation: spin 2s linear infinite; /* Safari */
+  animation: spin 2s linear infinite;
+}
+
+/* Safari */
+@-webkit-keyframes spin {
+  0% { -webkit-transform: rotate(0deg); }
+  100% { -webkit-transform: rotate(360deg); }
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+input, select {
+  border: 1px solid #CBCBCD;
+  border-radius: 4px;
+  height: 35px;
+  width: 100%;
+  padding-left: 15px;
+}
+.non_active {
+  border: 1px solid #CBCBCD;
+  border-radius: 4px;
+  height: 35px;
+  width: 100%;
+  padding-left: 15px;
+  color: #CBCBCD;
+  padding-top: 9px;
+}
+*:focus {
+  outline: none;
+}
+* {
+  box-sizing: border-box;
+}
+button {
+  border-radius: 4px;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 16px;
+  line-height: 128%;
+  color: #FFFFFF;
+  border: none;
+  width: 100%;
+  padding: 15px 0;
+  cursor: pointer;
+}
+.btnPrimary {
+  background: $primary;
+}
+.card {
+  background: #FFFFFF;
+  box-shadow: 0px 0px 25px rgba(0, 0, 0, 0.1);
+  border-radius: 10px;
+  width: 100%;
+  height: 100%;
+  padding: 20px;
+}
+.flex {
+  display: flex;
+  justify-content: space-between;
+}
+.mag-right {
+  margin-right: 10px;
+}
+.mag-left {
+  margin-left: 10px;
+}
+mat-header-cell {
+  font-weight: bolder;
+  color: $textHeader;
+}
+.icn {
+  cursor: pointer;
+}
+table {
+  width: 100%;
+  margin-top: 30px;
+}
+.search {
+  position: relative;
+  input {
+    padding-left: 50px;
+    height: 35px;
+  }
+  .Sicon {
+    position: absolute;
+    top: 9px;
+    left: 20px;
+  }
+}
+.header {
+  background-color: #E5E5E5;
+  padding: 20px;
+  width: 100%;
+  .title {
+    font-size: 15px;
+    color: rgb(102, 98, 98);
+    padding-bottom: 5px;
+  }
+  .sub {
+    font-size: 13px;
+    color: rgb(102, 98, 98);
+  }
+}
+.b-button {
+  background: #FFFFFF;
+  border: 1px solid $primary;
+  border-radius: 5px;
+  padding: 10px 20px;
+  color: $primary;
+  margin-left: 10px;
+  cursor: pointer;
+}
+.lds-ellipsis {
+  display: inline-block;
+  position: relative;
+  width: 80px;
+  height: 13px;
+}
+.lds-ellipsis div {
+  position: absolute;
+  top: 5px;
+  width: 9px;
+  height: 9px;
+  border-radius: 50%;
+  background: #fff;
+  animation-timing-function: cubic-bezier(0, 1, 1, 0);
+}
+.load {
+  width: 200px;
+  margin: 5% auto;
+}
+.lds-ellipsis div:nth-child(1) {
+  left: 8px;
+  animation: lds-ellipsis1 0.6s infinite;
+}
+.lds-ellipsis div:nth-child(2) {
+  left: 8px;
+  animation: lds-ellipsis2 0.6s infinite;
+}
+.lds-ellipsis div:nth-child(3) {
+  left: 32px;
+  animation: lds-ellipsis2 0.6s infinite;
+}
+.lds-ellipsis div:nth-child(4) {
+  left: 56px;
+  animation: lds-ellipsis3 0.6s infinite;
+}
+.paginator {
+  padding: 20px 50px;
+  background-color: white;
+}
+.pag {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  .num {
+    background-color: $primary;
+    color: white;
+    font-size: 17px;
+    padding: 6px 11px;
+    border-radius: 10px;
+    margin: 0 20px;
+  }
+  img {
+    width: 20px;
+    height: 20px;
+    cursor: pointer;
+  }
+}
+@keyframes lds-ellipsis1 {
+  0% {
+    transform: scale(0);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+@keyframes lds-ellipsis3 {
+  0% {
+    transform: scale(1);
+  }
+  100% {
+    transform: scale(0);
+  }
+}
+@keyframes lds-ellipsis2 {
+  0% {
+    transform: translate(0, 0);
+  }
+  100% {
+    transform: translate(24px, 0);
+  }
+}
+
+.pag {
+  img {
+    width: 30px;
+
+  }
+}

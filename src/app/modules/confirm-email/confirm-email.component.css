@@ -1,0 +1,344 @@
+/*
+0 - 600px:      Phone
+600 - 900px:    Tablet portrait
+900 - 1200px:   Tablet landscape
+[1200 - 1800] is where our normal styles apply
+1800px + :      Big desktop
+
+$breakpoint arguement choices:
+- phone
+- tab-port
+- tab-land
+- big-desktop
+
+ORDER: Base + typography > general layout + grid > page layout > components
+
+1em = 16px
+*/
+.box {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+  height: 100vh;
+  width: 100%;
+  margin: auto;
+}
+
+.box .image {
+  width: 100vw;
+  background-repeat: no-repeat !important;
+  background-position: center center !important;
+  background-size: cover !important;
+  height: 100vh;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.box .image .logo {
+  position: fixed;
+  top: 40px;
+  left: 70px;
+}
+
+@media (max-width: 1100px) and (min-width: 0px) {
+  .box .image .logo {
+    top: 20px;
+  }
+}
+
+@media (max-width: 900px) and (min-width: 0px) {
+  .box .image {
+    padding-right: 0;
+    padding-left: 0;
+    -webkit-box-pack: center;
+        -ms-flex-pack: center;
+            justify-content: center;
+  }
+}
+
+.box .image .login-wrapper {
+  position: absolute;
+  width: 528px;
+  height: 500px;
+  background: #FFFFFF;
+  border-radius: 4px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: start;
+      -ms-flex-pack: start;
+          justify-content: flex-start;
+  padding: 50px 40px;
+  max-height: 90vh;
+  overflow-y: auto;
+  overflow-x: hidden;
+}
+
+@media (max-width: 1100px) and (min-width: 0px) {
+  .box .image .login-wrapper {
+    max-height: 70vh;
+  }
+}
+
+@media (max-width: 600px) and (min-width: 0px) {
+  .box .image .login-wrapper {
+    width: 90vw;
+  }
+}
+
+.box .image .login-wrapper .loginHeader {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: start;
+      -ms-flex-pack: start;
+          justify-content: flex-start;
+}
+
+.box .image .login-wrapper .loginHeader .headD {
+  font-style: normal;
+  font-weight: bold;
+  font-size: 32px;
+  line-height: 38px;
+  color: #080730;
+  padding-left: 20px;
+}
+
+.box .image .login-wrapper .loginHeader .loginSub {
+  font-style: normal;
+  font-weight: normal;
+  font-size: 16px;
+  line-height: 19px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  color: #343A40;
+}
+
+form {
+  margin-top: 30px;
+  width: 100%;
+}
+
+form .sign {
+  font-style: normal;
+  font-weight: normal;
+  font-size: 16px;
+  line-height: 138%;
+  text-align: center;
+  letter-spacing: -0.005em;
+  -webkit-text-decoration-line: underline;
+          text-decoration-line: underline;
+  color: #B580D1;
+  padding-top: 15px;
+}
+
+form .forgot {
+  font-style: normal;
+  font-weight: normal;
+  font-size: 16px;
+  line-height: 138%;
+  text-align: center;
+  letter-spacing: -0.005em;
+  color: #343A40;
+  padding-top: 20px;
+}
+
+form .pup {
+  color: #B580D1;
+  text-decoration: none;
+}
+
+label {
+  font-style: normal;
+  font-weight: normal;
+  font-size: 16px;
+  line-height: 19px;
+  letter-spacing: -0.005em;
+  color: #080730;
+  padding-bottom: 7px;
+}
+
+.input {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  width: 100%;
+  margin: 20px 0;
+  position: relative;
+}
+
+.input .icn {
+  width: 70px;
+  height: 30px;
+  position: absolute;
+  top: 30px;
+  right: 0px;
+  cursor: pointer;
+}
+
+.down {
+  margin-top: 20px;
+}
+
+.resend {
+  color: #B580D1;
+  font-size: 16px;
+  text-align: left;
+  cursor: pointer;
+  margin-top: 10px;
+}
+
+.bx {
+  position: relative;
+  padding: 50px;
+  margin: auto;
+  padding: 0 10%;
+}
+
+.bx .signature-container {
+  width: 350px;
+  margin: auto;
+  background-color: #E5E5E5;
+  border-style: dashed;
+  border-width: 1px;
+}
+
+.bx .down {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+
+.bx button {
+  margin: 10px;
+  width: 90px;
+  padding: 10 20px;
+}
+
+.bx .mat-form-field {
+  width: 100%;
+}
+
+.bx .down {
+  width: 340px;
+  margin: auto;
+  margin-bottom: 20px;
+}
+
+.bx .sign {
+  width: 365px;
+  height: 150px;
+  margin: 20px auto;
+  margin-bottom: 40px;
+}
+
+.form-group {
+  position: relative;
+}
+
+.image-wrap {
+  display: inline-block;
+}
+
+.img-space {
+  position: relative;
+  border: dashed 1px #d3d3d3;
+  border-radius: 8px;
+  background-color: #f2f2f2;
+  height: auto;
+  width: 350px;
+  padding: 10px;
+  min-height: 150px;
+  max-height: 150px;
+}
+
+.img-space img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  margin: auto;
+  cursor: pointer;
+}
+
+.fileInputProfileWrap {
+  width: 100%;
+  height: auto;
+}
+
+.fileInputProfile {
+  position: absolute;
+  height: 100%;
+  width: 100%;
+  z-index: 99;
+  opacity: 0;
+  left: 0;
+  top: 0;
+  cursor: pointer;
+}
+
+.fileInputProfile[disabled] + .img-space {
+  pointer-events: none;
+  cursor: not-allowed !important;
+}
+
+.but {
+  background-color: #B580D1;
+  color: white;
+  margin-right: 20px;
+  width: 100px;
+}
+
+.space {
+  height: 100px;
+}
+
+.spaces {
+  height: 50px;
+}
+
+.all {
+  width: 365px;
+  margin: auto;
+}
+
+.botcon {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+/*# sourceMappingURL=confirm-email.component.css.map */

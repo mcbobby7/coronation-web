@@ -1,0 +1,28 @@
+<div class="header">
+  <div class="title">Add ID Card</div>
+  <div class="sub">Select Image Below To Add id card</div>
+</div>
+<div class="box">
+  <div class="sign">
+    <div class="form-group">
+      <div class="custom-file fileInputProfileWrap">
+          <input type="file" (change)="fileChangeEvent($event)" class="fileInputProfile">
+          <div class="img-space">
+              <ng-container *ngIf="isImageSaved; else elseTemplate">
+                  <img style="width: 350px; height: 150px;" [src]="cardImageBase64" />
+              </ng-container>
+              <ng-template #elseTemplate>
+
+                  <h3 style="width: 100%; text-align: center;">Click to select ID card</h3>
+                  <h4 style="width: 100%; text-align: center;">{{imageError}}</h4>
+              </ng-template>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="down">
+      <button *ngIf="!loading" type="button" (click)="sendOTP()" class="btnPrimary" > Save</button>
+      <button *ngIf="loading" type="button" class="btnPrimary" ><div class="lds-ellipsis"><div></div><div></div><div></div><div></div></div> </button>
+    </div>
+  <!-- </div> -->
+</div>

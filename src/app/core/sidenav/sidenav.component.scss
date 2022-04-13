@@ -1,0 +1,92 @@
+@import '../../../color', '../../../responsive';
+
+a {
+  text-decoration: none;
+  color: white;
+  background-color: white;
+  :hover {
+    background-color: $primary;
+    border-left: 3px solid white;
+  }
+  .active {
+    background-color: $primary;
+    border-left: 3px solid white;
+  }
+}
+
+.nav-caption {
+  display: inline-block;
+  padding-left: 6px;
+}
+mat-nav-list {
+  background-color: $secondary;
+}
+.links {
+  display: flex;
+  flex-direction: column;
+  .link {
+    background-color: transparent;
+    padding: 20px;
+    color: white;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 16px;
+    line-height: 19px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    align-content: center;
+    cursor: pointer;
+    text-decoration: none;
+    img {
+      margin: 0 10px;
+      margin-right: 20px;
+    }
+    :hover {
+      border-left: none;
+    }
+  }
+  :hover {
+    background-color: $primary;
+    border-left: 3px solid white;
+  }
+  .active {
+    background-color: $primary;
+    border-left: 3px solid white;
+  }
+}
+.logo {
+  margin: 30px;
+}
+.line {
+  width: 100%;
+  height: 0.5px;
+  background-color: white;
+  margin-top: 10px;
+  margin-bottom: 50px;
+}
+.user {
+  display: flex;
+  flex-direction: row;
+  margin-left: 30px;
+  .details {
+    display: flex;
+    flex-direction: column;
+    font-style: normal;
+    font-weight: 600;
+    font-size: 16px;
+    line-height: 19px;
+    color: #FFFFFF;
+    .name {
+      padding: 8px
+    }
+    .id {
+      padding: 8px
+    }
+  }
+  img {
+    border-radius: 50%;
+    width: 80px;
+    height: 80px;
+  }
+}

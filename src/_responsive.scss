@@ -1,0 +1,119 @@
+// Small tablets and large smartphones (landscape view)
+$screen-sm-min: 576px;
+
+// Small tablets (portrait view)
+$screen-md-min: 768px;
+
+// Tablets and small desktops
+$screen-lg-min: 992px;
+
+// Large tablets and desktops
+$screen-xl-min: 1200px;
+
+// Large desktops
+$screen-xxl-min: 1400px;
+
+@mixin sm {
+  @media (min-width: #{$screen-sm-min}) {
+    @content;
+  }
+}
+
+// Medium devices
+@mixin md {
+  @media (min-width: #{$screen-md-min}) {
+    @content;
+  }
+}
+
+// Large devices
+@mixin lg {
+  @media (min-width: #{$screen-lg-min}) {
+    @content;
+  }
+}
+
+// Extra large devices
+@mixin xl {
+  @media (min-width: #{$screen-xl-min}) {
+    @content;
+  }
+}
+
+// Extra extra larg devices
+
+@mixin xxl {
+  @media (min-width: #{$screen-xxl-min}) {
+    @content;
+  }
+}
+
+// Custom devices
+@mixin rwd($screen) {
+  @media (min-width: $screen+'px') {
+    @content;
+  }
+}
+@mixin max($screen) {
+  @media (max-width: $screen+'px') {
+    @content;
+  }
+}
+
+// between screen sizes
+@mixin btw($max, $min) {
+  @media (max-width: $max+'px') and (min-width: $min+'px') {
+    @content;
+  }
+}
+
+
+
+
+
+// MEDIA QUERY MANAGER
+
+/*
+0 - 600px:      Phone
+600 - 900px:    Tablet portrait
+900 - 1200px:   Tablet landscape
+[1200 - 1800] is where our normal styles apply
+1800px + :      Big desktop
+
+$breakpoint arguement choices:
+- phone
+- tab-port
+- tab-land
+- big-desktop
+
+ORDER: Base + typography > general layout + grid > page layout > components
+
+1em = 16px
+*/
+
+@mixin respond($breakpoint) {
+  @if $breakpoint==phone {
+      @media only screen and (max-width: 37.5em) {
+          @content
+      }
+      ; //600px
+  }
+  @if $breakpoint==tab-port {
+      @media only screen and (max-width: 56.25em) {
+          @content
+      }
+      ; //900px
+  }
+  @if $breakpoint==tab-land {
+      @media only screen and (max-width: 75em) {
+          @content
+      }
+      ; //1200px
+  }
+  @if $breakpoint==big-desktop {
+      @media only screen and (min-width: 112.5em) {
+          @content
+      }
+      ; //1800
+  }
+}

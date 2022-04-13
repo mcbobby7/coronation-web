@@ -1,0 +1,57 @@
+<div class="all">
+  <div class="row title">
+    <app-app-title [name]="'View Holdings'"></app-app-title>
+  </div>
+  <div class="middle">
+    <div class="search">
+      <input type="text" (keyup)="applyFilter($event)" #input placeholder="search">
+      <!-- <input type="text" #input placeholder="search"> -->
+      <img class="Sicon" src="assets/icons/search.svg" alt="">
+    </div>
+    <div class="b-button">Export CSV</div>
+  </div>
+  <app-dash-loader *ngIf="stageLoading"></app-dash-loader>
+
+
+  <div class="table">
+    <table mat-table [dataSource]="totHistory">
+
+
+      <ng-container matColumnDef="shareholderName">
+        <th mat-header-cell *matHeaderCellDef> Name </th>
+        <td mat-cell *matCellDef="let element"> {{element.shareholderName}} </td>
+      </ng-container>
+
+      <!-- Name Column -->
+      <ng-container matColumnDef="companyName">
+        <th mat-header-cell *matHeaderCellDef> Company </th>
+        <td mat-cell *matCellDef="let element"> {{element.companyName}} </td>
+      </ng-container>
+
+      <ng-container matColumnDef="unit">
+        <th mat-header-cell *matHeaderCellDef> Unit </th>
+        <td mat-cell *matCellDef="let element"> {{element.unit | currency:'&#8358;'}} </td>
+      </ng-container>
+
+      <!-- Weight Column -->
+      <ng-container matColumnDef="claimed">
+        <th mat-header-cell *matHeaderCellDef> Claimed </th>
+        <td mat-cell *matCellDef="let element"> {{element.claimed | date}} </td>
+      </ng-container>
+
+      <ng-container matColumnDef="claimedDate">
+        <th mat-header-cell *matHeaderCellDef> Date </th>claimed
+        <td mat-cell *matCellDef="let element"> {{element.claimedDate | date}} </td>
+      </ng-container>
+
+      <!-- Symbol Column -->
+
+      <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+      <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+
+      <tr class="mat-row" *matNoDataRow>
+        <td class="mat-cell" colspan="4">No data matching the filter "{{input.value}}"</td>
+      </tr>
+    </table>
+  </div>
+</div>

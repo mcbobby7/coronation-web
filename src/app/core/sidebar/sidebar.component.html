@@ -1,0 +1,148 @@
+<mat-sidenav-container>
+  <mat-sidenav fxHide fxShow.gt-sm mode="side" opened>
+    <div class="all">
+      <div class="logo">
+        <img src="assets/images/logo.png" alt="">
+      </div>
+      <div class="user">
+        <img src="assets/icons/userman.svg" alt="">
+        <div class="details">
+          <div class="name">{{name}}</div>
+          <div class="id">ID: AI123PQ79</div>
+        </div>
+      </div>
+      <div class="line"></div>
+      <div class="links">
+        <a class="link"
+        [routerLink]="['/dashboard']"
+        [routerLinkActiveOptions]="{ exact: true }"
+        routerLinkActive="active"
+        >
+          <img src="assets/icons/home.svg" alt="">
+          <span>My Dashboard</span>
+        </a>
+        <!-- <a class="link"
+        [routerLink]="['/share-holdings']"
+        [routerLinkActiveOptions]="{ exact: true }"
+        routerLinkActive="active"
+        >
+          <img src="assets/icons/shareholder.svg" alt="">
+          <span>Shareholdings</span>
+        </a> -->
+        <!-- <mat-accordion>
+          <mat-expansion-panel hideToggle>
+            <mat-expansion-panel-header>
+              <mat-panel-title>
+                <img src="assets/icons/service.svg" alt="">
+                <span>Service Request</span>
+              </mat-panel-title>
+            </mat-expansion-panel-header>
+            <p [routerLink]="['/service-request']" >Change Address</p>
+            <p>Account Consolidation</p>
+            <p (click)="signature()">Signature Change</p>
+            <p>Bank Account Change</p>
+          </mat-expansion-panel>
+        </mat-accordion> -->
+
+        <mat-accordion>
+          <mat-expansion-panel hideToggle>
+            <mat-expansion-panel-header>
+              <mat-panel-title>
+                <img src="assets/icons/report.svg" alt="">
+                <span>Report</span>
+              </mat-panel-title>
+            </mat-expansion-panel-header>
+            <p matTooltip="Unlock at basic" *ngIf="pack == '1'" matTooltipPosition="above" (click)="subscribe()">Transaction History <img class="lock" src="assets/icons/lock.svg" alt=""></p>
+            <p
+              *ngIf="pack == '2' || pack == '3'"
+              [routerLink]="['/transaction-history']"
+              [routerLinkActiveOptions]="{ exact: true }"
+            >Transaction History </p>
+
+            <p matTooltip="Unlock at basic" *ngIf="pack == '1'" matTooltipPosition="above" (click)="subscribe()">View Holdings <img class="lock" src="assets/icons/lock.svg" alt=""></p>
+            <p
+              *ngIf="pack == '2' || pack == '3'"
+              [routerLink]="['/view-holding']"
+              [routerLinkActiveOptions]="{ exact: true }"
+            >View Holdings </p>
+
+
+            <p
+            *ngIf="pack == '2' || pack == '3'"
+            [routerLink]="['/dividend-history']"
+            [routerLinkActiveOptions]="{ exact: true }"
+          >Devidend History</p>
+            <p matTooltip="Unlock at basic" *ngIf="pack == '1'" matTooltipPosition="above" (click)="subscribe()">Devidend History <img class="lock" src="assets/icons/lock.svg" alt=""></p>
+          </mat-expansion-panel>
+        </mat-accordion>
+
+        <mat-accordion>
+          <mat-expansion-panel hideToggle>
+            <mat-expansion-panel-header>
+              <mat-panel-title>
+                <img style="width: 22px; height: 22px;" src="assets/icons/premium.svg" alt="">
+                <span style="padding-right: 92px;" matTooltip="Unlock at premium" matTooltipPosition="above">Premium </span> <img class="slock" (click)="subscribe()" src="assets/icons/premium-badge.svg">
+              </mat-panel-title>
+            </mat-expansion-panel-header>
+            <p matTooltip="Unlock at premium" *ngIf="pack == '1'" matTooltipPosition="above" (click)="subscribe()">Valuation Report <img class="lock" src="assets/icons/lock.svg" alt=""></p>
+            <p
+              *ngIf="pack == '3'"
+              [routerLink]="['/transaction-history']"
+              [routerLinkActiveOptions]="{ exact: true }"
+            >Valuation Report </p>
+            <p
+            *ngIf="pack == '3'"
+            [routerLink]="['/dividend-history']"
+            [routerLinkActiveOptions]="{ exact: true }"
+          >Re-invest Dividend</p>
+            <p matTooltip="Unlock at premium" *ngIf="pack == '1' || pack == '2'" matTooltipPosition="above" (click)="subscribe()">Re-invest Dividend<img class="lock" src="assets/icons/lock.svg" alt=""></p>
+            <p matTooltip="Unlock at premium" *ngIf="pack == '1' || pack == '2'" matTooltipPosition="above" (click)="subscribe()">Purchase Securities <img class="lock" src="assets/icons/lock.svg" alt=""></p>
+            <p
+            *ngIf="pack == '3'"
+            [routerLink]="['/dividend-history']"
+            [routerLinkActiveOptions]="{ exact: true }"
+          >Purchase Securities</p>
+          </mat-expansion-panel>
+        </mat-accordion>
+
+
+        <a class="link"
+        [routerLink]="['/Messages']"
+        [routerLinkActiveOptions]="{ exact: true }"
+        routerLinkActive="active"
+        >
+          <img src="assets/icons/messages.svg" alt="">
+          <span>Messages</span>
+        </a>
+        <mat-accordion>
+          <mat-expansion-panel hideToggle>
+            <mat-expansion-panel-header>
+              <mat-panel-title>
+                <img src="assets/icons/settings.svg" alt="">
+                <span>Settings</span>
+              </mat-panel-title>
+            </mat-expansion-panel-header>
+            <p (click)="changePassword()">Change Password</p>
+          </mat-expansion-panel>
+        </mat-accordion>
+        <a class="link"
+        [routerLink]="['/Support']"
+        [routerLinkActiveOptions]="{ exact: true }"
+        routerLinkActive="active"
+        >
+          <img src="assets/icons/support.svg" alt="">
+          <span>Support</span>
+        </a>
+        <a class="link"
+        [routerLink]="['/auth/login']"
+        [routerLinkActiveOptions]="{ exact: true }"
+        routerLinkActive="active"
+        >
+          <img src="assets/icons/log.svg" alt="">
+          <span>Log Out</span>
+        </a>
+      </div>
+    </div>
+  </mat-sidenav>
+  <mat-sidenav-content><ng-content></ng-content></mat-sidenav-content>
+</mat-sidenav-container>

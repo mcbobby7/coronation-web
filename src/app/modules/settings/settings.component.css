@@ -1,0 +1,19 @@
+.all .card {
+  width: 600px;
+  margin: auto;
+}
+
+.all .card .title {
+  color: #343A40;
+  font-weight: 700;
+  font-size: 17px;
+  margin-bottom: 20px;
+}
+
+.all .card .func {
+  color: #B580D1;
+  font-size: 14px;
+  cursor: pointer;
+  margin: 10px 0;
+}
+/*# sourceMappingURL=settings.component.css.map */

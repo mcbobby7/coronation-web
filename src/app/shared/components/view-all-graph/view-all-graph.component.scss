@@ -1,0 +1,59 @@
+.all {
+  padding: 30px;
+}
+.holdGraph {
+  display: flex;
+  flex-direction: column;
+  .top-graph {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    .text {
+      font-style: normal;
+      font-weight: 600;
+      font-size: 20px;
+      line-height: 24px;
+      color: #474747;
+      width: 40%;
+    }
+    .weeks {
+      background: #FFFFFF;
+      box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.25);
+      width: 60%;
+      display: flex;
+      flex-direction: row;
+      justify-content: space-evenly;
+      padding: 9px 0;
+      margin-bottom: 20px;
+      .week {
+        font-style: normal;
+        font-weight: normal;
+        font-size: 16px;
+        line-height: 19px;
+        color: #000000;
+        cursor: pointer;
+      }
+      .selected {
+        font-style: normal;
+        font-weight: bold;
+        font-size: 16px;
+        line-height: 19px;
+
+        color: #B580D1;
+      }
+    }
+  }
+  .tit {
+    font-style: normal;
+    font-weight: 600;
+    font-size: 16px;
+    line-height: 19px;
+    color: #474747;
+    margin-top: 20px;
+    margin-bottom: 20px;
+  }
+  .chart {
+    height: 300px;
+    padding-top: 100px;
+  }
+}

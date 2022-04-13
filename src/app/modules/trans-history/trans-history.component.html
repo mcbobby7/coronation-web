@@ -1,0 +1,132 @@
+<div class="all">
+  <div class="row title">
+    <app-app-title [name]="'Transaction History'"></app-app-title>
+  </div>
+  <div class="middle">
+    <div class="search">
+      <input type="text" (keyup)="applyFilter($event)" #input placeholder="search">
+      <!-- <input type="text" #input placeholder="search"> -->
+      <img class="Sicon" src="assets/icons/search.svg" alt="">
+    </div>
+    <div class="last" style="display: flex; flex-direction: row;">
+      <div class="b-button b-search" style="text-align: center; width: 100px; margin-right: 20px;" (click)="search()">Search</div>
+      <div class="b-button" (click)="exportexcel()">Export CSV</div>
+    </div>
+  </div>
+  <div class="middles">
+    <div class="fom">
+      <select name="" id="" (change)="onChangeTran($event.target.value)">
+        <option  value="0">Select Company</option>
+        <option *ngFor="let data of registrers" [value]="data.id">{{data.name}}</option>
+      </select>
+    </div>
+    <div class="filter" [matMenuTriggerFor]="menu">
+      <img class="icn" src="assets/icons/filter.svg" alt="">
+      Filter by
+    </div>
+  </div>
+  <mat-menu #menu="matMenu">
+    <button mat-menu-item (click)="searchSale('1')" >Buy</button>
+    <button mat-menu-item (click)="searchSale('0')">Sell</button>
+    <button mat-menu-item (click)="searchSale('2')">All</button>
+  </mat-menu>
+  <app-dash-loader *ngIf="stageLoading"></app-dash-loader>
+
+
+  <div class="table">
+    <table mat-table [dataSource]="totHistory" id="excel-table">
+
+
+      <ng-container matColumnDef="unit">
+        <th mat-header-cell *matHeaderCellDef> Unit </th>
+        <td mat-cell *matCellDef="let element">
+          <ng-container *ngIf="element.unit < 0"> <span style="color: red;">{{element.unit}}</span> </ng-container>
+          <ng-container *ngIf="element.unit >= 0"><span style="color: green;">{{element.unit}}</span> </ng-container>
+        </td>
+      </ng-container>
+
+      <ng-container matColumnDef="registrar">
+        <th mat-header-cell *matHeaderCellDef> Company </th>
+        <td mat-cell *matCellDef="let element"> {{element.registrar}} </td>
+      </ng-container>
+<!--
+      <ng-container matColumnDef="shareID">
+        <th mat-header-cell *matHeaderCellDef> Share ID </th>
+        <td mat-cell *matCellDef="let element"> {{element.shareID}} </td>
+      </ng-container> -->
+
+      <ng-container matColumnDef="transType">
+        <th mat-header-cell *matHeaderCellDef> Transaction Type </th>
+        <td mat-cell *matCellDef="let element"> {{element.transType}} </td>
+      </ng-container>
+
+      <ng-container matColumnDef="certNo">
+        <th mat-header-cell *matHeaderCellDef> Certificate No</th>
+        <td mat-cell *matCellDef="let element"> {{element.certNo}} </td>
+      </ng-container>
+
+      <ng-container matColumnDef="description">
+        <th mat-header-cell *matHeaderCellDef>Description </th>
+        <td mat-cell *matCellDef="let element"> {{element.description}} </td>
+      </ng-container>
+
+      <ng-container matColumnDef="transDate">
+        <th mat-header-cell *matHeaderCellDef> Date </th>
+        <td mat-cell *matCellDef="let element"> {{element.transDate | date}} </td>
+      </ng-container>
+
+      <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+      <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+
+      <tr class="mat-row" *matNoDataRow>
+        <td class="mat-cell" colspan="4">No data matching the filter "{{input.value}}"</td>
+      </tr>
+    </table>
+
+    <div class="paginator">
+      <div class="pag">
+        <img (click)="prev()" style="width: 30px; height: 30px;" src="assets/icons/prev1.svg" alt="">
+        <div class="num">{{pageNum}}</div>
+        <img (click)="next()" style="width: 30px; height: 30px;" src="assets/icons/next1.svg" alt="">
+      </div>
+    </div>
+  </div>
+</div>
+<div class="overlay" (click)="search()" *ngIf="reportSeleceted" [@slideInOut]></div>
+<div class="report" *ngIf="reportSeleceted" [@slideInOut]>
+
+  <div class="input">
+    <label for="">Select Company</label>
+    <select name="" id="" (change)="onChangeCom($event.target.value)">
+      <option  value="0">Select Company</option>
+      <option *ngFor="let data of registrers" [value]="data.id">{{data.name}}</option>
+    </select>
+  </div>
+
+  <div class="input">
+    <label for="">Transaction Type</label>
+    <select name="" id="" [(ngModel)]="transType">
+      <option  value="1">Buy</option>
+      <option  value="0">Sell</option>
+      <option  value="2">All</option>
+    </select>
+  </div>
+
+  <div class="input">
+    <label for="">Search Text</label>
+    <input [(ngModel)]="text" type="text" placeholder="search text">
+  </div>
+
+  <div class="input">
+    <label for="">Start Date</label>
+    <input [(ngModel)]="startDate" type="date">
+  </div>
+
+  <div class="input">
+    <label for="">End Date</label>
+    <input [(ngModel)]="endDate" type="date">
+  </div>
+
+  <div class="b-button b-search" style="text-align: center;" (click)="fetchHistory()">Search</div>
+
+</div>

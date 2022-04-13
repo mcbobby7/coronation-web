@@ -1,0 +1,53 @@
+<div class="header">
+  <div class="title">{{title}}</div>
+  <div class="sub">{{sub}}</div>
+</div>
+<div class="box">
+  <div class="main">
+    <form *ngIf="save" [formGroup]="form">
+      <div class="input">
+        <label for="">Old Address</label>
+        <input formControlName="oldAddress" type="text" placeholder="">
+      </div>
+      <div class="input">
+        <label for="">New Address</label>
+        <input formControlName="new_Address" type="text" placeholder="">
+      </div>
+      <div class="input">
+        <label for="">Company</label>
+        <select formControlName="company_id" name="" id="">
+          <option *ngFor="let data of companies" [value]="data.id">{{data.coyName}}</option>
+        </select>
+      </div>
+
+      <div class="input">
+        <label for="">Country</label>
+        <select formControlName="country_id" name="" id="">
+          <option *ngFor="let data of countries" [value]="data.id">{{data.name}}</option>
+        </select>
+      </div>
+
+      <div class="input">
+        <label for="">Date Of Birth</label>
+        <input formControlName="dob" type="date" placeholder="">
+      </div>
+
+      <div class="down">
+        <button *ngIf="!loading" (click)="sendOtp()" class="btnPrimary" > Save </button>
+        <button *ngIf="loading" type="button" class="btnPrimary" ><div class="lds-ellipsis"><div></div><div></div><div></div><div></div></div> </button>
+      </div>
+    </form>
+    <form *ngIf="!save">
+      <div class="input">
+        <label for="">OTP</label>
+        <input [(ngModel)]="otpNumber" type="number" placeholder="" [ngModelOptions]="{standalone: true}">
+      </div>
+
+      <div class="down">
+        <button *ngIf="!loading" (click)="VerifyOTP()" class="btnPrimary" > Verify </button>
+        <button *ngIf="loading" type="button" class="btnPrimary" ><div class="lds-ellipsis"><div></div><div></div><div></div><div></div></div> </button>
+      </div>
+    </form>
+    <div style="height: 100px;"></div>
+  </div>
+</div>

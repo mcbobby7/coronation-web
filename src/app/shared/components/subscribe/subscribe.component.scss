@@ -1,0 +1,65 @@
+.box {
+  .body {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    width: 100%;
+    padding-top: 50px;
+    .card {
+      width: 150px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      margin: 15px;
+      cursor: pointer;
+      img {
+        width: 100px;
+        height: 100px;
+      }
+      .text {
+        font-size: 20px;
+        font-weight: 600;
+        margin-top: 30px;
+        margin-bottom: 10px;
+      }
+      .free {
+        color: #979593;
+      }
+      .basic {
+        color: #3952e2;
+      }
+      .premium {
+        color: #d3b129;
+      }
+    }
+  }
+  .foot {
+    margin-top: 20px;
+    .line {
+      background-color: #d3b129;
+      width: 100px;
+      height: 3px;
+      margin: auto;
+    }
+    .g {
+      font-size: 13px;
+      text-align: center;
+      width: 300px;
+      margin: auto;
+      margin-bottom: 20px;
+      margin-top: 10px;
+      .pre {
+        color: #d3b129;
+      }
+    }
+  }
+}
+.selected1 {
+  border: 3px solid #979593;
+}
+.selected2 {
+  border: 3px solid #3952e2;
+}
+.selected3 {
+  border: 3px solid #d3b129;
+}

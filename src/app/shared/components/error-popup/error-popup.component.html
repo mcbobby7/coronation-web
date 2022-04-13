@@ -1,0 +1,9 @@
+<div class="box">
+  <img *ngIf="data.success" class="icns" src="assets/icons/success.gif" alt="">
+  <img *ngIf="!data.success" class="icns" src="assets/icons/error.gif" alt="">
+  <div class="image">
+    <img *ngIf="data.success" class="err" src="assets/icons/success2.svg" alt="">
+    <img *ngIf="!data.success" class="err" src="assets/icons/error2.svg" alt="">
+  </div>
+  <div class="error">{{data.message}}</div>
+</div>

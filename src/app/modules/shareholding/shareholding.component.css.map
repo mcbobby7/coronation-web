@@ -1,0 +1,9 @@
+{
+    "version": 3,
+    "mappings": "AAAA,AAAA,MAAM,CAAC;EACL,UAAU,EAAE,IAAI;CACjB;;AACD,AACE,IADE,CACF,OAAO,CAAC;EACN,OAAO,EAAE,IAAI;EACb,eAAe,EAAE,aAAa;EAC9B,cAAc,EAAE,GAAG;CACpB;;AAEH,AAAA,OAAO,CAAC;EACN,KAAK,EAAE,KAAK;CACb",
+    "sources": [
+        "shareholding.component.scss"
+    ],
+    "names": [],
+    "file": "shareholding.component.css"
+}

@@ -1,0 +1,79 @@
+<mat-nav-list>
+  <div class="logo">
+    <img src="assets/images/logo.png" alt="">
+  </div>
+  <div class="user">
+    <img src="assets/images/user.png" alt="">
+    <div class="details">
+      <div class="name">Mukhtar Saliu</div>
+      <div class="id">ID: AI123PQ79</div>
+    </div>
+  </div>
+  <div class="line"></div>
+  <div class="links">
+    <a class="link"
+    [routerLink]="['/']"
+    [routerLinkActiveOptions]="{ exact: true }"
+    routerLinkActive="active"
+    >
+      <img src="assets/icons/home.svg" alt="">
+      <span>My Dashboard</span>
+    </a>
+    <a class="link"
+    [routerLink]="['/share-holdings']"
+    [routerLinkActiveOptions]="{ exact: true }"
+    routerLinkActive="active"
+    >
+      <img src="assets/icons/shareholder.svg" alt="">
+      <span>Shareholdings</span>
+    </a>
+    <a class="link"
+    [routerLink]="['/Report']"
+    [routerLinkActiveOptions]="{ exact: true }"
+    routerLinkActive="active"
+    >
+      <img src="assets/icons/transaction.svg" alt="">
+      <span>Transaction</span>
+    </a>
+    <a class="link"
+    [routerLink]="['/Report']"
+    [routerLinkActiveOptions]="{ exact: true }"
+    routerLinkActive="active"
+    >
+      <img src="assets/icons/report.svg" alt="">
+      <span>Report</span>
+    </a>
+    <a class="link"
+    [routerLink]="['/Messages']"
+    [routerLinkActiveOptions]="{ exact: true }"
+    routerLinkActive="active"
+    >
+      <img src="assets/icons/messages.svg" alt="">
+      <span>Messages</span>
+    </a>
+    <a class="link"
+    [routerLink]="['/Settings']"
+    [routerLinkActiveOptions]="{ exact: true }"
+    routerLinkActive="active"
+    >
+      <img src="assets/icons/settings.svg" alt="">
+      <span>Settings</span>
+    </a>
+    <a class="link"
+    [routerLink]="['/Support']"
+    [routerLinkActiveOptions]="{ exact: true }"
+    routerLinkActive="active"
+    >
+      <img src="assets/icons/support.svg" alt="">
+      <span>Support</span>
+    </a>
+    <a class="link"
+    [routerLink]="['/auth/login']"
+    [routerLinkActiveOptions]="{ exact: true }"
+    routerLinkActive="active"
+    >
+      <img src="assets/icons/log.svg" alt="">
+      <span>Log Out</span>
+    </a>
+  </div>
+</mat-nav-list>

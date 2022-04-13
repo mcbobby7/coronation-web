@@ -1,0 +1,30 @@
+.box {
+  position: relative;
+  padding: 50px;
+}
+
+.box .signature-container {
+  width: 350px;
+  margin: auto;
+  background-color: #E5E5E5;
+  border-style: dashed;
+  border-width: 1px;
+}
+
+.box .down {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+
+.box button {
+  margin: 10px;
+}
+/*# sourceMappingURL=signature.component.css.map */

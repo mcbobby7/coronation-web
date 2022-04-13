@@ -1,0 +1,147 @@
+/*
+0 - 600px:      Phone
+600 - 900px:    Tablet portrait
+900 - 1200px:   Tablet landscape
+[1200 - 1800] is where our normal styles apply
+1800px + :      Big desktop
+
+$breakpoint arguement choices:
+- phone
+- tab-port
+- tab-land
+- big-desktop
+
+ORDER: Base + typography > general layout + grid > page layout > components
+
+1em = 16px
+*/
+a {
+  text-decoration: none;
+  color: white;
+  background-color: white;
+}
+
+a :hover {
+  background-color: #B580D1;
+  border-left: 3px solid white;
+}
+
+a .active {
+  background-color: #B580D1;
+  border-left: 3px solid white;
+}
+
+.nav-caption {
+  display: inline-block;
+  padding-left: 6px;
+}
+
+mat-nav-list {
+  background-color: #1A1A1A;
+}
+
+.links {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+}
+
+.links .link {
+  background-color: transparent;
+  padding: 20px;
+  color: white;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 19px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -ms-flex-line-pack: center;
+      align-content: center;
+  cursor: pointer;
+  text-decoration: none;
+}
+
+.links .link img {
+  margin: 0 10px;
+  margin-right: 20px;
+}
+
+.links .link :hover {
+  border-left: none;
+}
+
+.links :hover {
+  background-color: #B580D1;
+  border-left: 3px solid white;
+}
+
+.links .active {
+  background-color: #B580D1;
+  border-left: 3px solid white;
+}
+
+.logo {
+  margin: 30px;
+}
+
+.line {
+  width: 100%;
+  height: 0.5px;
+  background-color: white;
+  margin-top: 10px;
+  margin-bottom: 50px;
+}
+
+.user {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  margin-left: 30px;
+}
+
+.user .details {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  font-style: normal;
+  font-weight: 600;
+  font-size: 16px;
+  line-height: 19px;
+  color: #FFFFFF;
+}
+
+.user .details .name {
+  padding: 8px;
+}
+
+.user .details .id {
+  padding: 8px;
+}
+
+.user img {
+  border-radius: 50%;
+  width: 80px;
+  height: 80px;
+}
+/*# sourceMappingURL=sidenav.component.css.map */

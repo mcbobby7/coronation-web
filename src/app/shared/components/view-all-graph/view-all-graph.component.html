@@ -1,0 +1,33 @@
+<div class="header">
+  <div class="title">View All</div>
+  <div class="sub">you can toggle between weeks and months below</div>
+</div>
+<div class="all">
+  <div class="holdGraph">
+    <div class="top-graph">
+      <div class="text" style="cursor: pointer;">View Holdings</div>
+      <div class="weeks">
+        <span class="week" [className]="divMode == '1W'? 'selected': 'week'" (click)="searchdiv(7,'1W')">1W</span>
+        <span class="week" [className]="divMode == '1M'? 'selected': 'week'" (click)="searchdiv(30,'1M')">1M</span>
+        <span class="week" [className]="divMode == '3M'? 'selected': 'week'" (click)="searchdiv(90,'3M')">3M</span>
+        <span class="week" [className]="divMode == '6M'? 'selected': 'week'" (click)="searchdiv(180,'6M')">6M</span>
+        <span class="week" [className]="divMode == '1Y'? 'selected': 'week'" (click)="searchdiv(365,'1Y')">1Y</span>
+        <span class="week" [className]="divMode == 'Max'? 'selected': 'week'" (click)="searchdiv(2000,'Max')">Max</span>
+      </div>
+    </div>
+    <div class="tit">Summary</div>
+    <div class="all">
+      <canvas baseChart
+          [datasets]="lineChartData"
+          [labels]="lineChartLabels"
+          [options]="lineChartOptions"
+          [colors]="lineChartColors"
+          [legend]="lineChartLegend"
+          [chartType]="lineChartType"
+          [plugins]="lineChartPlugins">
+      </canvas>
+  </div>
+  </div>
+</div>
+<app-dash-loader *ngIf="stageLoading"></app-dash-loader>
+

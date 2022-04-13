@@ -1,0 +1,33 @@
+<!-- <div class="box"
+[ngStyle]="{ 'box-shadow': 'inset 0 0 0 2000px ' + overlay }"
+[style.background]="'url(' + backgroundImg + ')'"
+>
+</div> -->
+<div class="carousel">
+  <ng-container *ngFor="let slide of slides; let i = index">
+    <!-- <img
+      *ngIf="i === currentSlide"
+      [src]="slide.src"
+      class="slide"
+      @carouselAnimation
+    /> -->
+    <div class="content-wrapper"
+    *ngIf="i === currentSlide"
+      class="slide"
+      @carouselAnimation
+    >
+    <a [href]="slide.url" target="blank">
+    <div class="img" [style.background]="'url(' + slide.img + ')'"></div>
+    </a>
+    </div>
+  </ng-container>
+
+  <!-- controls -->
+  <!-- <button class="control prev" (click)="onPreviousClick()">
+    <span class="arrow left"></span>
+  </button>
+  <button class="control next" (click)="onNextClick()">
+    <span class="arrow right"></span>
+  </button> -->
+</div>
+

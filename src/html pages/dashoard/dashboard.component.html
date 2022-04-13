@@ -1,0 +1,271 @@
+
+<div class="container">
+  <div class="row ad">
+    <div class="col-12"><app-ad-card [overlay]="overlay" [backgroundImg]="backgroundImg"></app-ad-card></div>
+  </div>
+  <div class="row title">
+    <app-app-title [name]="'Dashboard'"></app-app-title>
+  </div>
+  <div class="row">
+    <div class="col-xl-6 col-sm-12">
+
+
+      <div class="allLeft">
+        <!-- holdings chart -->
+        <div class="card">
+          <div class="holdGraph">
+            <div class="top-graph">
+              <div class="text" style="cursor: pointer;" (click)="viewAll()">View Holdings</div>
+              <!-- <div class="weeks">
+                <span class="week" [className]="divMode == '1W'? 'selected': 'week'" (click)="searchdiv(7,'1W')">1W</span>
+                <span class="week" [className]="divMode == '1M'? 'selected': 'week'" (click)="searchdiv(30,'1M')">1M</span>
+                <span class="week" [className]="divMode == '3M'? 'selected': 'week'" (click)="searchdiv(90,'3M')">3M</span>
+                <span class="week" [className]="divMode == '6M'? 'selected': 'week'" (click)="searchdiv(180,'6M')">6M</span>
+                <span class="week" [className]="divMode == '1Y'? 'selected': 'week'" (click)="searchdiv(365,'1Y')">1Y</span>
+                <span class="week" [className]="divMode == 'Max'? 'selected': 'week'" (click)="searchdiv(2000,'Max')">Max</span>
+              </div> -->
+            </div>
+            <div class="tit">Summary</div>
+            <div class="all">
+              <canvas baseChart
+                [data]="doughnutChartData"
+                [labels]="doughnutChartLabels"
+                [colors]="dChartColors"
+                [chartType]="doughnutChartType">
+              </canvas>
+          </div>
+          </div>
+        </div>
+        <app-dash-loader *ngIf="stageLoading"></app-dash-loader>
+
+        <!-- dividend -->
+        <div class="dividend row">
+          <div class="col-12">
+            <div class="row">
+              <div class="col-6 col-sm-6">
+                <div class="total">
+                  <div class="title" style="margin-bottom: 10px;">Total Dividend</div>
+                  <div class="amount">{{list.totalDividend | currency:'&#8358;'}}</div>
+                  <div class="line"></div>
+                  <div class="list">
+                    <div class="in" *ngFor="let data of dividend">
+                      <span class="on">{{data.name}}</span><span class="on">{{data.value | currency:'&#8358;'}}</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class=" col-6">
+                <div class="status row">
+                  <div class="col-12">
+                    <div class="stat card">
+                      <div class="title">Dividend Status</div>
+                      <div class="list">
+                        <div class="in">
+                          <span class="on">Claimed</span><span class="on">{{list.claimedDividend | currency:'&#8358;'}}</span>
+                        </div>
+                        <div class="in">
+                          <span class="on">Unclaimed</span><span class="on">{{list.unClaimedDividend | currency:'&#8358;'}}</span>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="col-12">
+                    <div class="val card">
+                      <div class="title">Dividend Status</div>
+                      <div class="amount">{{list.currentValues | currency:'&#8358;'}}</div>
+                      <div class="date">As at {{date | date}}</div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="history card" >
+          <div class="top">
+            <div class="tit" style="cursor: pointer;" (click)="divHisto()">Dividend history</div>
+            <div class="select">
+              <!-- <div class="date">
+                <span>Start date</span>
+                <div style="width: 1px; height: 100%; background-color: #C4C4C4;"></div>
+                <span>End date</span>
+              </div> -->
+              <div class="fom">
+                <select name="" id="" (change)="onChangeDivT($event.target.value)">
+                  <option *ngFor="let data of registrers" [value]="data.id">{{data.name}}</option>
+                </select>
+              </div>
+            </div>
+          </div>
+          <div class="table">
+            <table mat-table [dataSource]="divHistory">
+
+
+              <ng-container matColumnDef="paymentNo">
+                <th mat-header-cell *matHeaderCellDef> Payment No. </th>
+                <td mat-cell *matCellDef="let element">
+                  <ng-container>{{element.paymentNo}}</ng-container>
+                </td>
+              </ng-container>
+
+              <!-- Name Column -->
+              <ng-container matColumnDef="dividend">
+                <th mat-header-cell *matHeaderCellDef> Dividend </th>
+                <td mat-cell *matCellDef="let element">
+                  <ng-container *ngIf="element.dividend < 0"> <span style="color: red;">{{element.dividend | currency:'&#8358;'}}</span> </ng-container>
+                  <ng-container *ngIf="element.dividend >= 0"> <span style="color: green;"> {{element.dividend | currency:'&#8358;'}}</span> </ng-container>
+                </td>
+              </ng-container>
+
+              <ng-container matColumnDef="dividendStatus">
+                <th mat-header-cell *matHeaderCellDef> Status </th>
+                <td mat-cell *matCellDef="let element">
+                  <ng-container> {{element.dividendStatus}} </ng-container>
+                </td>
+              </ng-container>
+
+              <!-- Symbol Column -->
+
+              <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+              <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+            </table>
+          </div>
+        </div>
+
+
+      </div>
+    </div>
+
+
+    <div class="col-xl-6 col-sm-12">
+      <div>
+        <div class="card shares">
+          <div class="top">
+            <div class="title">
+              Shares
+            </div>
+            <div class="fom">
+              <select name="" id="" (change)="onChangeDiv($event.target.value)">
+                <option *ngFor="let data of registrers" [value]="data.id">{{data.name}}</option>
+              </select>
+            </div>
+          </div>
+          <div class="botom">
+            <span class="total">
+              <div class="tot">Total Shares</div>
+              <div class="money">{{list.totalShares}}</div>
+            </span>
+            <div class="line"></div>
+            <span class="total">
+              <div class="tot">Total Valuation</div>
+              <div class="money">{{list.totalValuation | currency:'&#8358;'}}</div>
+            </span>
+          </div>
+        </div>
+
+        <div class="card transaction">
+          <div class="top">
+            <div class="tit" style="cursor: pointer;" (click)="transHisto()">Transaction history</div>
+            <!-- <div class="side">
+              <img class="icn" src="assets/icons/undo.svg" alt="">
+              <button>Export as CSV</button>
+            </div> -->
+          </div>
+          <div class="middle">
+            <div class="fom">
+              <select name="" id="" (change)="onChangeTran($event.target.value)">
+                <option *ngFor="let data of registrers" [value]="data.id">{{data.name}}</option>
+              </select>
+            </div>
+            <div class="filter" [matMenuTriggerFor]="menu">
+              <img class="icn" src="assets/icons/filter.svg" alt="">
+              Filter by
+            </div>
+          </div>
+          <mat-menu #menu="matMenu">
+            <button mat-menu-item (click)="searchSale('1')" >Buy</button>
+            <button mat-menu-item (click)="searchSale('0')">Sell</button>
+            <button mat-menu-item (click)="searchSale('2')">All</button>
+          </mat-menu>
+          <div class="table">
+            <table mat-table [dataSource]="totHistory">
+
+
+              <ng-container matColumnDef="unitOfShares">
+                <th mat-header-cell *matHeaderCellDef> Unit</th>
+                <td mat-cell *matCellDef="let element">
+                  <ng-container *ngIf="element.unitOfShares < 0"> <span style="color: red;">{{element.unitOfShares}}</span> </ng-container>
+                  <ng-container *ngIf="element.unitOfShares >= 0"> <span style="color: green;">{{element.unitOfShares}}</span></ng-container>
+                </td>
+              </ng-container>
+
+              <!-- Name Column -->
+              <ng-container matColumnDef="description">
+                <th mat-header-cell *matHeaderCellDef> Company </th>
+                <td mat-cell *matCellDef="let element">
+                  <ng-container>{{element.description}} </ng-container>
+                </td>
+              </ng-container>
+
+              <ng-container matColumnDef="dividendStatus">
+                <th mat-header-cell *matHeaderCellDef> Transaction type </th>
+                <td mat-cell *matCellDef="let element">
+                  <ng-container>{{element.dividendStatus}} </ng-container>
+                </td>
+              </ng-container>
+
+              <!-- Weight Column -->
+              <ng-container matColumnDef="dateCreated">
+                <th mat-header-cell *matHeaderCellDef> Date </th>
+                <td mat-cell *matCellDef="let element"> {{element.dateCreated | date}} </td>
+              </ng-container>
+
+              <!-- Symbol Column -->
+
+              <tr mat-header-row *matHeaderRowDef="displayedColumns1"></tr>
+              <tr mat-row *matRowDef="let row; columns: displayedColumns1;"></tr>
+            </table>
+          </div>
+        </div>
+
+
+        <div class="card" style="margin-top: 20px;">
+          <div class="holdGraph">
+            <div class="top-graph">
+              <div class="text" style="cursor: pointer;" (click)="viewAll()">Total Valuation</div>
+              <!-- <div class="weeks">
+                <span class="week" [className]="divMode == '1W'? 'selected': 'week'" (click)="searchdiv(7,'1W')">1W</span>
+                <span class="week" [className]="divMode == '1M'? 'selected': 'week'" (click)="searchdiv(30,'1M')">1M</span>
+                <span class="week" [className]="divMode == '3M'? 'selected': 'week'" (click)="searchdiv(90,'3M')">3M</span>
+                <span class="week" [className]="divMode == '6M'? 'selected': 'week'" (click)="searchdiv(180,'6M')">6M</span>
+                <span class="week" [className]="divMode == '1Y'? 'selected': 'week'" (click)="searchdiv(360,'1Y')">1Y</span>
+                <span class="week" [className]="divMode == 'Max'? 'selected': 'week'" (click)="searchdiv(2000,'Max')">Max</span>
+              </div> -->
+            </div>
+            <div class="tit">Summary</div>
+            <div class="all">
+              <canvas baseChart
+                  [datasets]="lineChartData"
+                  [labels]="lineChartLabels"
+                  [options]="lineChartOptions"
+                  [colors]="dChartColors"
+                  [legend]="lineChartLegend"
+                  [chartType]="lineChartType"
+                  [plugins]="lineChartPlugins">
+              </canvas>
+              <!-- <canvas baseChart
+                      [datasets]="lineChartData"
+                      [labels]="lineChartLabels"
+                      [options]="lineChartOptions"
+                      [legend]="lineChartLegend"
+                      [chartType]="lineChartType">
+              </canvas> -->
+          </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
